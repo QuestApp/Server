@@ -136,4 +136,32 @@ class Question
     {
         return $this->quest;
     }
+    /**
+     * @var \QuestServer\QuestBundle\Entity\QuestionType
+     */
+    private $questiontype;
+
+
+    /**
+     * Set questiontype
+     *
+     * @param \QuestServer\QuestBundle\Entity\QuestionType $questiontype
+     * @return Question
+     */
+    public function setQuestiontype(\QuestServer\QuestBundle\Entity\QuestionType $questiontype = null)
+    {
+        $this->questiontype = $questiontype;
+
+        return $this;
+    }
+
+    /**
+     * Get questiontype
+     *
+     * @return \QuestServer\QuestBundle\Entity\QuestionType 
+     */
+    public function getQuestiontype()
+    {
+        return $this->questiontype;
+    }
 }

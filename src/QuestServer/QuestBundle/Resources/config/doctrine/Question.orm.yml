@@ -25,4 +25,10 @@ QuestServer\QuestBundle\Entity\Question:
           joinColumn:
             name: quest_id
             referencedColumnName: id
+        questiontype:
+          targetEntity: QuestionType
+          inversedBy: questions
+          joinColumn:
+            name: questiontype_id
+            referencedColumnName: id
     lifecycleCallbacks: {  }
