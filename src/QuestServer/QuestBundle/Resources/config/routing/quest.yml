@@ -1,0 +1,30 @@
+admin:
+    pattern:  /
+    defaults: { _controller: "QuestServerQuestBundle:Quest:index" }
+
+admin_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "QuestServerQuestBundle:Quest:show" }
+
+admin_new:
+    pattern:  /new
+    defaults: { _controller: "QuestServerQuestBundle:Quest:new" }
+
+admin_create:
+    pattern:  /create
+    defaults: { _controller: "QuestServerQuestBundle:Quest:create" }
+    requirements: { _method: post }
+
+admin_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "QuestServerQuestBundle:Quest:edit" }
+
+admin_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "QuestServerQuestBundle:Quest:update" }
+    requirements: { _method: post|put }
+
+admin_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "QuestServerQuestBundle:Quest:delete" }
+    requirements: { _method: post|delete }
