@@ -1,0 +1,11 @@
+quest_server_quest_admin:
+    resource: "@QuestServerQuestBundle/Resources/config/routing/quest.yml"
+    prefix:   /admin/quest
+
+quest_server_questiontype_admin:
+    resource: "@QuestServerQuestBundle/Resources/config/routing/questiontype.yml"
+    prefix:   /admin/questiontype
+
+quest_server_question_admin:
+    resource: "@QuestServerQuestBundle/Resources/config/routing/question.yml"
+    prefix:   /admin/question
