@@ -1,0 +1,28 @@
+QuestServer\QuestBundle\Entity\Question:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        locationHuman:
+            type: string
+            length: 255
+            column: location_human
+        locationCoord:
+            type: string
+            length: '85'
+            column: location_coord
+        summary:
+            type: text
+    manyToOne:
+        quest:
+          targetEntity: Quest
+          inversedBy: questions
+          joinColumn:
+            name: quest_id
+            referencedColumnName: id
+    lifecycleCallbacks: {  }

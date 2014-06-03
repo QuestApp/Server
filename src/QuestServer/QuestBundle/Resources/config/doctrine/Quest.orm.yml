@@ -17,4 +17,8 @@ QuestServer\QuestBundle\Entity\Quest:
             type: datetime
         validUntill:
             type: datetime
+    oneToMany:
+        questions:
+          targetEntity: Question
+          mappedBy: quest
     lifecycleCallbacks: {  }

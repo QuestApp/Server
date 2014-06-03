@@ -136,4 +136,49 @@ class Quest
     {
         return $this->validUntill;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $questions;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->questions = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add questions
+     *
+     * @param \QuestServer\QuestBundle\Entity\Question $questions
+     * @return Quest
+     */
+    public function addQuestion(\QuestServer\QuestBundle\Entity\Question $questions)
+    {
+        $this->questions[] = $questions;
+
+        return $this;
+    }
+
+    /**
+     * Remove questions
+     *
+     * @param \QuestServer\QuestBundle\Entity\Question $questions
+     */
+    public function removeQuestion(\QuestServer\QuestBundle\Entity\Question $questions)
+    {
+        $this->questions->removeElement($questions);
+    }
+
+    /**
+     * Get questions
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getQuestions()
+    {
+        return $this->questions;
+    }
 }
