@@ -1,3 +1,8 @@
 quests:
     type:     rest
     resource: QuestServer\ApiBundle\Controller\QuestsController
+
+questions:
+    type:     rest
+    parent:   quests
+    resource: QuestServer\ApiBundle\Controller\QuestionsController

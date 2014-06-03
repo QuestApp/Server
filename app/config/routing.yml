@@ -1,4 +1,5 @@
 quest_server_api:
+    type: rest
     resource: "@QuestServerApiBundle/Resources/config/routing.yml"
     prefix:   /
 
