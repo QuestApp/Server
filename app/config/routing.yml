@@ -1,3 +1,7 @@
+quest_server_quest:
+    resource: "@QuestServerQuestBundle/Resources/config/routing.yml"
+    prefix:   /
+
 quest_server_common:
     resource: "@QuestServerCommonBundle/Resources/config/routing.yml"
     prefix:   /

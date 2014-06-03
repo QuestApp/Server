@@ -24,6 +24,7 @@ class AppKernel extends Kernel
             new Nelmio\CorsBundle\NelmioCorsBundle(),
 
             new QuestServer\CommonBundle\QuestServerCommonBundle(),
+            new QuestServer\QuestBundle\QuestServerQuestBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
