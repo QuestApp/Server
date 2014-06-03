@@ -1,0 +1,30 @@
+admin_questiontype:
+    pattern:  /
+    defaults: { _controller: "QuestServerQuestBundle:QuestionType:index" }
+
+admin_questiontype_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "QuestServerQuestBundle:QuestionType:show" }
+
+admin_questiontype_new:
+    pattern:  /new
+    defaults: { _controller: "QuestServerQuestBundle:QuestionType:new" }
+
+admin_questiontype_create:
+    pattern:  /create
+    defaults: { _controller: "QuestServerQuestBundle:QuestionType:create" }
+    requirements: { _method: post }
+
+admin_questiontype_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "QuestServerQuestBundle:QuestionType:edit" }
+
+admin_questiontype_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "QuestServerQuestBundle:QuestionType:update" }
+    requirements: { _method: post|put }
+
+admin_questiontype_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "QuestServerQuestBundle:QuestionType:delete" }
+    requirements: { _method: post|delete }
