@@ -74,9 +74,15 @@ fos_user:
     firewall_name: main
     user_class: QuestServer\CommonBundle\Entity\User
 
+# FOSRestBundle Configuration
+fos_rest:
+    routing_loader:
+        default_format: json
+
 # NelmioAPIDocBundle Configuration
 nelmio_api_doc: ~
 
+# NelmioCorsBundle Configuration
 nelmio_cors:
     defaults:
         allow_credentials: false

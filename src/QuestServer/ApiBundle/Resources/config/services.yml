@@ -1,0 +1,7 @@
+parameters:
+#    quest_server_api.example.class: QuestServer\ApiBundle\Example
+
+services:
+#    quest_server_api.example:
+#        class: %quest_server_api.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

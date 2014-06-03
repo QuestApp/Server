@@ -1,0 +1,3 @@
+quests:
+    type:     rest
+    resource: QuestServer\ApiBundle\Controller\QuestsController
