@@ -2,13 +2,13 @@ admin_questiontype:
     pattern:  /
     defaults: { _controller: "QuestServerQuestBundle:QuestionType:index" }
 
-admin_questiontype_show:
-    pattern:  /{id}/show
-    defaults: { _controller: "QuestServerQuestBundle:QuestionType:show" }
-
 admin_questiontype_new:
     pattern:  /new
     defaults: { _controller: "QuestServerQuestBundle:QuestionType:new" }
+
+admin_questiontype_show:
+    pattern:  /{id}
+    defaults: { _controller: "QuestServerQuestBundle:QuestionType:show" }
 
 admin_questiontype_create:
     pattern:  /create

@@ -2,13 +2,13 @@ admin:
     pattern:  /
     defaults: { _controller: "QuestServerQuestBundle:Quest:index" }
 
-admin_show:
-    pattern:  /{id}/show
-    defaults: { _controller: "QuestServerQuestBundle:Quest:show" }
-
 admin_new:
     pattern:  /new
     defaults: { _controller: "QuestServerQuestBundle:Quest:new" }
+
+admin_show:
+    pattern:  /{id}
+    defaults: { _controller: "QuestServerQuestBundle:Quest:show" }
 
 admin_create:
     pattern:  /create

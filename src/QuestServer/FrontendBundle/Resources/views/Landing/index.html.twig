@@ -1,0 +1,11 @@
+{% extends 'QuestServerCommonBundle::base.html.twig' %}
+
+{% block container_in %}
+    <h1>Quest list</h1>
+
+    {% for entity in entities %}
+    <h2><a href="{{ jsclient_host }}/quest.html?srv=http://{{app.request.httphost}}&amp;questId={{ entity.id }}">{{ entity.name }}</a></h2>
+    <p>{{ entity.description }}</p>
+    <p><small>{% if entity.validFrom %}From {{ entity.validFrom|date('Y-m-d H:i:s') }}{% endif %} {% if entity.validUntill %}Untill {{ entity.validUntill|date('Y-m-d H:i:s') }}{% endif %}</small></p>
+    {% endfor %}
+{% endblock %}

@@ -29,6 +29,7 @@ class QuestController extends Controller
             'entities' => $entities,
         ));
     }
+    
     /**
      * Creates a new Quest entity.
      *

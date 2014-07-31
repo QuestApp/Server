@@ -1,0 +1,30 @@
+{% extends 'QuestServerQuestBundle::layout.html.twig' %}
+
+{% if quest is defined %}
+	{% set questob = quest %}
+{% elseif entity.quest is defined %}
+	{% set questob = entity.quest %}
+{% elseif entity.questions is defined %}
+	{% if entity.id is not null %}
+		{% set questob = entity %}
+	{% endif %}	
+{% endif %}
+
+{% block container_in %}
+<div class="row-fluid">
+{% if questob is defined %}
+	<div class="span4">
+	<p>
+		<a href="{{ path('admin_show', {'id': questob.id}) }}"><strong>Quest: {{ questob.name }}</strong></a> | 
+		<a href="{{ path('admin_question', {'questID': questob.id}) }}">Questions</a>
+	</p>
+	</div>
+	<div class="span8">
+{% else %}
+	<div class="span12">
+{% endif %}
+	{% block content %}
+	{% endblock %}
+	</div>
+</div>
+{% endblock %}

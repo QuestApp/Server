@@ -19,23 +19,36 @@ class QuestionController extends Controller
      * Lists all Question entities.
      *
      */
-    public function indexAction()
+    public function indexAction($questID)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('QuestServerQuestBundle:Question')->findAll();
+        $quest = $em->getRepository('QuestServerQuestBundle:Quest')->find($questID);
+        if (!$quest) 
+            throw $this->createNotFoundException('Unable to find Quest entity.');
+
+        $entities = $em->getRepository('QuestServerQuestBundle:Question')->findBy(array('quest' => $quest));
 
         return $this->render('QuestServerQuestBundle:Question:index.html.twig', array(
             'entities' => $entities,
+            'quest' => $quest
         ));
     }
     /**
      * Creates a new Question entity.
      *
      */
-    public function createAction(Request $request)
+    public function createAction(Request $request, $questID)
     {
+        $em = $this->getDoctrine()->getManager();
+
         $entity = new Question();
+
+        $quest = $em->getRepository('QuestServerQuestBundle:Quest')->find($questID);
+        if (!$quest) 
+            throw $this->createNotFoundException('Unable to find Quest entity.');
+        $entity->setQuest($quest);
+
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -44,11 +57,12 @@ class QuestionController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_question_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('admin_question_show', array('id' => $entity->getId(), 'questID' => $entity->getQuest()->getId())));
         }
 
         return $this->render('QuestServerQuestBundle:Question:new.html.twig', array(
             'entity' => $entity,
+            'quest' => $quest,
             'form'   => $form->createView(),
         ));
     }
@@ -63,7 +77,7 @@ class QuestionController extends Controller
     private function createCreateForm(Question $entity)
     {
         $form = $this->createForm(new QuestionType(), $entity, array(
-            'action' => $this->generateUrl('admin_question_create'),
+            'action' => $this->generateUrl('admin_question_create', array('questID' => $entity->getQuest()->getId())),
             'method' => 'POST',
         ));
 
@@ -76,13 +90,22 @@ class QuestionController extends Controller
      * Displays a form to create a new Question entity.
      *
      */
-    public function newAction()
+    public function newAction($questID)
     {
+        $em = $this->getDoctrine()->getManager();
+
         $entity = new Question();
+
+        $quest = $em->getRepository('QuestServerQuestBundle:Quest')->find($questID);
+        if (!$quest) 
+            throw $this->createNotFoundException('Unable to find Quest entity.');
+        $entity->setQuest($quest);
+
         $form   = $this->createCreateForm($entity);
 
         return $this->render('QuestServerQuestBundle:Question:new.html.twig', array(
             'entity' => $entity,
+            'quest' => $quest,
             'form'   => $form->createView(),
         ));
     }
@@ -91,7 +114,7 @@ class QuestionController extends Controller
      * Finds and displays a Question entity.
      *
      */
-    public function showAction($id)
+    public function showAction($questID, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -112,7 +135,7 @@ class QuestionController extends Controller
      * Displays a form to edit an existing Question entity.
      *
      */
-    public function editAction($id)
+    public function editAction($questID, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -142,7 +165,7 @@ class QuestionController extends Controller
     private function createEditForm(Question $entity)
     {
         $form = $this->createForm(new QuestionType(), $entity, array(
-            'action' => $this->generateUrl('admin_question_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('admin_question_update', array('id' => $entity->getId(), 'questID' => $entity->getQuest()->getId())),
             'method' => 'PUT',
         ));
 
@@ -201,7 +224,7 @@ class QuestionController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('admin_question'));
+        return $this->redirect($this->generateUrl('admin_question', array('questID' => $entity->getQuest()->getId())));
     }
 
     /**

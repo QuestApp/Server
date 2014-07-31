@@ -1,6 +1,6 @@
-{% extends '::base.html.twig' %}
+{% extends 'QuestServerQuestBundle:Question:layout.html.twig' %}
 
-{% block body -%}
+{% block content %}
     <h1>Question</h1>
 
     <table class="record_properties">
@@ -26,12 +26,12 @@
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('admin_question') }}">
+        <a href="{{ path('admin_question', { 'questID':entity.quest.id }) }}">
             Back to the list
         </a>
     </li>
     <li>
-        <a href="{{ path('admin_question_edit', { 'id': entity.id }) }}">
+        <a href="{{ path('admin_question_edit', { 'id': entity.id, 'questID':entity.quest.id }) }}">
             Edit
         </a>
     </li>

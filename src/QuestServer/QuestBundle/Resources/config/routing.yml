@@ -8,4 +8,4 @@ quest_server_questiontype_admin:
 
 quest_server_question_admin:
     resource: "@QuestServerQuestBundle/Resources/config/routing/question.yml"
-    prefix:   /admin/question
+    prefix:   /admin
