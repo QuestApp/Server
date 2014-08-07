@@ -17,6 +17,30 @@ class AnswersController extends FOSRestController
      *  section="Questions"
      * )
      */
+    public function getAnswerAction($questID, $questionID)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $user = $this->get('security.context')->getToken()->getUser();
+
+        $answer = $em->getRepository('QuestServerQuestBundle:Answer')->findOneBy(array('question'=>$questionID, 'user'=>$user));
+
+        if($answer)
+            $data = array('value' => $answer->getValue());
+        else
+            throw $this->createNotFoundException('No answer set yet');
+
+        $view = $this->view($data, 200);
+
+        return $this->handleView($view);
+    }
+
+    /**
+     * @ApiDoc(
+     *  description="Submit an answer to a question",
+     *  section="Questions"
+     * )
+     */
     public function postAnswerAction($questID, $questionID)
     {
         $em = $this->getDoctrine()->getManager();
