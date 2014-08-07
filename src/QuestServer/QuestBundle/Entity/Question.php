@@ -164,4 +164,49 @@ class Question
     {
         return $this->questiontype;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $answers;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->answers = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add answers
+     *
+     * @param \QuestServer\QuestBundle\Entity\Answer $answers
+     * @return Question
+     */
+    public function addAnswer(\QuestServer\QuestBundle\Entity\Answer $answers)
+    {
+        $this->answers[] = $answers;
+
+        return $this;
+    }
+
+    /**
+     * Remove answers
+     *
+     * @param \QuestServer\QuestBundle\Entity\Answer $answers
+     */
+    public function removeAnswer(\QuestServer\QuestBundle\Entity\Answer $answers)
+    {
+        $this->answers->removeElement($answers);
+    }
+
+    /**
+     * Get answers
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAnswers()
+    {
+        return $this->answers;
+    }
 }

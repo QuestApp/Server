@@ -6,3 +6,8 @@ questions:
     type:     rest
     parent:   quests
     resource: QuestServer\ApiBundle\Controller\QuestionsController
+
+answers:
+    type:     rest
+    parent:   questions
+    resource: QuestServer\ApiBundle\Controller\AnswersController

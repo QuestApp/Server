@@ -31,4 +31,8 @@ QuestServer\QuestBundle\Entity\Question:
           joinColumn:
             name: questiontype_id
             referencedColumnName: id
+    oneToMany:
+        answers:
+          targetEntity: Answer
+          mappedBy: question
     lifecycleCallbacks: {  }
