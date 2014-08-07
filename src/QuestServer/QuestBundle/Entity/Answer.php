@@ -80,4 +80,32 @@ class Answer
     {
         return $this->question;
     }
+    /**
+     * @var \QuestServer\CommonBundle\Entity\User
+     */
+    private $user;
+
+
+    /**
+     * Set user
+     *
+     * @param \QuestServer\CommonBundle\Entity\User $user
+     * @return Answer
+     */
+    public function setUser(\QuestServer\CommonBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \QuestServer\CommonBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }

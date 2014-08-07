@@ -23,7 +23,14 @@ class AnswersController extends FOSRestController
         
         $question = $em->getRepository('QuestServerQuestBundle:Question')->find($questionID);
 
-        $entity = new Answer();
+        $user = $this->get('security.context')->getToken()->getUser();
+
+        $existingAnswer = $em->getRepository('QuestServerQuestBundle:Answer')->findOneBy(array('question'=>$questionID, 'user'=>$user));
+
+        if($existingAnswer != false)
+            $entity = $existingAnswer;
+        else
+            $entity = new Answer();
 
         $entity->setQuestion($question);
 
@@ -32,6 +39,9 @@ class AnswersController extends FOSRestController
         else
             throw $this->createNotFoundException('No value was set');
         $entity->setValue($value);
+
+        if(!$existingAnswer)
+            $entity->setUser($user);
 
         $em->persist($entity);
         $em->flush();

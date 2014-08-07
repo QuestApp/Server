@@ -18,4 +18,10 @@ QuestServer\QuestBundle\Entity\Answer:
           joinColumn:
             name: Question_id
             referencedColumnName: id
+        user:
+          targetEntity: QuestServer\CommonBundle\Entity\User
+          inversedBy: answers
+          joinColumn:
+            name: user_id
+            referencedColumnName: id
     lifecycleCallbacks: {  }
