@@ -11,3 +11,8 @@ answers:
     type:     rest
     parent:   questions
     resource: QuestServer\ApiBundle\Controller\AnswersController
+
+answer_post:
+    pattern:  /quests/{questID}/questions/{questionID}/answer.{_format}
+    defaults: { _controller: QuestServerApiBundle:Answers:postAnswer, _format: json }
+    requirements: { _method: post }

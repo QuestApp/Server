@@ -58,10 +58,12 @@ class AnswersController extends FOSRestController
 
         $entity->setQuestion($question);
 
-        if(isset($_POST['value']))
-            $value = $_POST['value'];
+        $val = $this->get('request')->request->get('value');
+        if($val)
+            $value = $val;
         else
             throw $this->createNotFoundException('No value was set');
+
         $entity->setValue($value);
 
         if(!$existingAnswer)
@@ -70,7 +72,7 @@ class AnswersController extends FOSRestController
         $em->persist($entity);
         $em->flush();
 
-        $view = $this->view(array("message"=>"OK"), 200);
+        $view = $this->view(array("message"=>"OK","value"=>"$value"), 200);
 
         return $this->handleView($view);
     }
