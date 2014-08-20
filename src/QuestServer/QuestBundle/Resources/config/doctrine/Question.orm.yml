@@ -18,6 +18,10 @@ QuestServer\QuestBundle\Entity\Question:
             column: location_coord
         summary:
             type: text
+        answertype:
+            type: string
+            length: 32
+            nullable: true
     manyToOne:
         quest:
           targetEntity: Quest

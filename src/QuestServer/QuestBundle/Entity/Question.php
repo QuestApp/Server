@@ -209,4 +209,32 @@ class Question
     {
         return $this->answers;
     }
+    /**
+     * @var string
+     */
+    private $answertype;
+
+
+    /**
+     * Set answertype
+     *
+     * @param string $answertype
+     * @return Question
+     */
+    public function setAnswertype($answertype)
+    {
+        $this->answertype = $answertype;
+
+        return $this;
+    }
+
+    /**
+     * Get answertype
+     *
+     * @return string 
+     */
+    public function getAnswertype()
+    {
+        return $this->answertype;
+    }
 }

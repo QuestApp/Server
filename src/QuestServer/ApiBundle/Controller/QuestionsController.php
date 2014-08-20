@@ -62,6 +62,8 @@ class QuestionsController extends FOSRestController
         $data['question_type']['name']   = $entity->getQuestiontype()->getName();
         $data['question_type']['icon']   = $entity->getQuestiontype()->getIcon();
 
+        $data['answer_type']     = $entity->getAnswertype();
+
         return $data;
     }
 
