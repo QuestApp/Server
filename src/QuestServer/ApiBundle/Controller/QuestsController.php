@@ -59,6 +59,7 @@ class QuestsController extends FOSRestController
         $data['description']    = $entity->getDescription();
         $data['valid_from']     = $entity->getValidFrom();
         $data['valid_untill']   = $entity->getValidUntill();
+        $data['allow_resubmit'] = $entity->getAllowResubmit();
 
         return $data;
     }

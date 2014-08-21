@@ -181,4 +181,35 @@ class Quest
     {
         return $this->questions;
     }
+    /**
+     * @var string
+     */
+    private $allowResubmit;
+
+
+    /**
+     * Set allowResubmit
+     *
+     * @param string $allowResubmit
+     * @return Quest
+     */
+    public function setAllowResubmit($allowResubmit)
+    {
+        $this->allowResubmit = $allowResubmit;
+
+        return $this;
+    }
+
+    /**
+     * Get allowResubmit
+     *
+     * @return string 
+     */
+    public function getAllowResubmit()
+    {
+        if($this->allowResubmit != null)
+            return $this->allowResubmit;
+        else
+            return false;
+    }
 }

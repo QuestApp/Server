@@ -17,6 +17,9 @@ QuestServer\QuestBundle\Entity\Quest:
             type: datetime
         validUntill:
             type: datetime
+        allowResubmit:
+            type:  boolean
+            nullable: true
     oneToMany:
         questions:
           targetEntity: Question
