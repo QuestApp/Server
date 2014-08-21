@@ -69,10 +69,22 @@ class AnswersController extends FOSRestController
         if(!$existingAnswer)
             $entity->setUser($user);
 
-        $em->persist($entity);
+        if($question->getQuest()->getAllowResubmit() == false)
+            if($existingAnswer)
+                $notauth = 'You are not allowed to resubmit answers';
+            else
+                $em->persist($entity);    
+        else
+            $em->persist($entity);
+
         $em->flush();
 
-        $view = $this->view(array("message"=>"OK","value"=>"$value"), 200);
+        if(isset($notauth))
+            $view = $this->view(array("message"=>"NOTALLOWED","value"=>"$notauth"), 400);
+        elseif(isset($err))
+            $view = $this->view(array("message"=>"ERROR","value"=>"$err"), 500);
+        else
+            $view = $this->view(array("message"=>"OK","value"=>"$value"), 200);
 
         return $this->handleView($view);
     }
