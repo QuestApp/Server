@@ -235,6 +235,8 @@ class Question
      */
     public function getAnswertype()
     {
-        return $this->answertype;
-    }
+        if($this->answertype != null)
+            return $this->answertype;
+        else
+            return false;    }
 }
