@@ -27,6 +27,7 @@ class AppKernel extends Kernel
             new QuestServer\QuestBundle\QuestServerQuestBundle(),
             new QuestServer\ApiBundle\QuestServerApiBundle(),
             new QuestServer\FrontendBundle\QuestServerFrontendBundle(),
+            new StudIO\TrackerBundle\StudIOTrackerBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

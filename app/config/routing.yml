@@ -1,3 +1,7 @@
+stud_io_tracker:
+    resource: "@StudIOTrackerBundle/Resources/config/routing.yml"
+    prefix:   /
+
 quest_server_frontend:
     resource: "@QuestServerFrontendBundle/Resources/config/routing.yml"
     prefix:   /

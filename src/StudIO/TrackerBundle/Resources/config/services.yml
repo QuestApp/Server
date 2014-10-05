@@ -1,0 +1,7 @@
+parameters:
+#    stud_io_tracker.example.class: StudIO\TrackerBundle\Example
+
+services:
+#    stud_io_tracker.example:
+#        class: %stud_io_tracker.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

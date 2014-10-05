@@ -1,0 +1,24 @@
+StudIO\TrackerBundle\Entity\Track:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        ident:
+            type: string
+            length: 255
+            nullable: true
+        ip:
+            type: string
+            length: '32'
+        latlong:
+            type: string
+            length: 255
+            nullable: true
+        timestamp:
+            type: datetimetz
+    lifecycleCallbacks: {  }

@@ -1,0 +1,8 @@
+#stud_io_tracker_homepage:
+#    pattern:  /hello/{name}
+#    defaults: { _controller: StudIOTrackerBundle:Default:index }
+
+stud_io_tracker_api:
+    type:     rest
+    resource: StudIO\TrackerBundle\Controller\TrackApiController
+    prefix:   /api
