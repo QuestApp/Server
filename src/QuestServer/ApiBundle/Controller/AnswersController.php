@@ -57,12 +57,24 @@ class AnswersController extends FOSRestController
             $entity = new Answer();
 
         $entity->setQuestion($question);
-
+		
         $val = $this->get('request')->request->get('value');
         if($val)
             $value = $val;
-        else
-            throw $this->createNotFoundException('No value was set');
+        elseif($question->getAnswertype() == 'pic'){
+			if(isset($_FILES['value'])){
+				$targetdir = '/tmp/';
+				$targetname= rand(1000000000,9999999999).'.'.pathinfo($_FILES['value']['name'], PATHINFO_EXTENSION);
+				$targetpath = $targetdir.$targetname;
+			
+				move_uploaded_file($_FILES['value']['tmp_name'],$targetpath);
+			
+				$value = $targetname;				
+			}else{
+				throw $this->createNotFoundException('No file was uploaded');
+			}
+		}else
+			throw $this->createNotFoundException('No value was set');
 
         $entity->setValue($value);
 
